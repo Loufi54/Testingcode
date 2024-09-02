@@ -240,6 +240,7 @@
             <h2>Facebook</h2>
             <p><a href="https://facebook.com" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook.png"/> Facebook</a></p>
         </div>
+        <button onclick="hideContact()">Kembali</button>
     </div>
     
     <div class="input-section">
@@ -383,6 +384,11 @@
         function showContact() {
             const contactSection = document.getElementById('contact-section');
             contactSection.style.display = 'block';
+        }
+
+        function hideContact() {
+            const contactSection = document.getElementById('contact-section');
+            contactSection.style.display = 'none';
         }
 
         checkLogin();
