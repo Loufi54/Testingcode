@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            flex-direction: column;
+            padding: 10px;
+            box-sizing: border-box;
+            text-shadow: 0 0 10px #00ff00;
+            position: relative;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #00ff00;
+            animation: blink 1s step-end infinite;
+        }
+        .login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: #0d0d0d;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ff00;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 10px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 16px;
+            color: #00ff00;
+            background-color: #0d0d0d;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div id="login-section" class="login-container">
+    <h1>Login</h1>
+    <input type="text" id="username" placeholder="Masukkan nama kamu">
+    <button onclick="login()">Login</button>
+</div>
+
+<div id="welcome-section" class="login-container" style="display: none;">
+    <h1 id="welcome-message"></h1>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+    function login() {
+        const username = document.getElementById('username').value;
+        if (username) {
+            document.getElementById('welcome-message').innerText = 'Welcome ' + username + '!';
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('welcome-section').style.display = 'block';
+        } else {
+            alert('Nama tidak boleh kosong!');
+        }
+    }
+    
+    function logout() {
+        document.getElementById('login-section').style.display = 'block';
+        document.getElementById('welcome-section').style.display = 'none';
+        document.getElementById('username').value = '';
+    }
+</script>
+
+</body>
+</html
