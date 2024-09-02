@@ -211,7 +211,7 @@
     <div class="profile" onclick="openModal()">
         <img src="https://i.imgur.com/yAZulsm.jpeg" alt="Profile Picture">
     </div>
-    <h1 class="glitch">WELCOME ABANG KU</h1>
+    <h1 class="glitch" id="welcome-heading">WELCOME</h1>
     <div class="input-section">
         <h2>JavaScript:</h2>
         <textarea id="jsCode" class="neon-border" placeholder="Masukkan kode JavaScript di sini..."></textarea>
@@ -336,6 +336,18 @@
         function closeModal() {
             document.getElementById("myModal").style.display = "none";
         }
+
+        // Check login status
+        function checkLogin() {
+            const username = localStorage.getItem("username");
+            if (username) {
+                document.getElementById('welcome-heading').innerText = 'WELCOME ' + username.toUpperCase();
+            } else {
+                window.location.href = "login.html";
+            }
+        }
+
+        checkLogin();
     </script>
 </body>
-</html>
+            </html>
