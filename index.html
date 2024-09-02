@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testing kode</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            flex-direction: column;
+            padding: 10px;
+            box-sizing: border-box;
+            text-shadow: 0 0 10px #00ff00;
+            position: relative;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #00ff00;
+            animation: blink 1s step-end infinite;
+        }
+        h2 {
+            color: #00ff00;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+        .input-section {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            padding: 5px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            resize: none;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4);
+            background-color: #0d0d0d;
+            color: #00ff00;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 12px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            cursor: pointer;
+            margin: 5px 2px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+        .result {
+            width: 100%;
+            max-width: 400px;
+            background-color: #0d0d0d;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4);
+            margin-top: 10px;
+        }
+        .output {
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: #0d0d0d;
+            padding: 5px;
+            border-radius: 5px;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+        }
+        .live-preview {
+            margin-top: 10px;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4);
+        }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
+            }
+            to {
+                box-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 60px #00ff00;
+            }
+        }
+        .neon-border {
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .glitch {
+            color: #00ff00;
+            text-align: center;
+            font-size: 1.5em;
+            position: relative;
+            animation: glitch 1s linear infinite;
+        }
+        @keyframes glitch {
+            0% {
+                text-shadow: -2px 2px 0 #00ff00, 2px -2px 0 #00ff00;
+                transform: skew(0.5deg,0.5deg);
+            }
+            2%, 64% {
+                text-shadow: -2px 2px 0 #00ff00, 2px -2px 0 #00ff00;
+                transform: skew(0.5deg,0.5deg);
+            }
+            68% {
+                text-shadow: -2px 2px 0 #00ff00, 2px -2px 0 #00ff00;
+                transform: skew(-0.5deg,-0.5deg);
+            }
+            70%, 98% {
+                text-shadow: -2px 2px 0 #00ff00, 2px -2px 0 #00ff00;
+                transform: skew(-0.5deg,-0.5deg);
+            }
+            100% {
+                text-shadow: -2px 2px 0 #00ff00, 2px -2px 0 #00ff00;
+                transform: skew(0.5deg,0.5deg);
+            }
+        }
+        .profile {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #0d0d0d;
+            padding: 20px;
+            border: 1px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ff00;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .close {
+            color: #00ff00;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            margin-bottom: 20px;
+        }
+        .copyright {
+            margin-top: 10px;
+            font-size: 0.6em;
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile" onclick="openModal()">
+        <img src="https://i.imgur.com/yAZulsm.jpeg" alt="Profile Picture">
+    </div>
+    <h1 class="glitch">WELCOME ABANG KU</h1>
+    <div class="input-section">
+        <h2>JavaScript:</h2>
+        <textarea id="jsCode" class="neon-border" placeholder="Masukkan kode JavaScript di sini..."></textarea>
+        <button onclick="runJSCode()">Jalankan Kode</button>
+        <button onclick="clearCode('jsCode')">Hapus Kode</button>
+        <button onclick="copyCode('jsCode')">Salin Kode</button>
+        <button onclick="saveCode('jsCode', 'script.js')">download file</button>
+        <div class="result neon-border">
+            <h2>Hasil JavaScript:</h2>
+            <div id="jsOutput" class="output"></div>
+        </div>
+    </div>
+    <div class="input-section">
+        <h2>HTML:</h2>
+        <textarea id="htmlCode" class="neon-border" placeholder="Masukkan kode HTML di sini..."></textarea>
+        <button onclick="copyCode('htmlCode')">Salin Kode</button>
+        <button onclick="saveCode('htmlCode', 'index.html')">download file</button>
+    </div>
+    <div class="input-section">
+        <h2>CSS:</h2>
+        <textarea id="cssCode" class="neon-border" placeholder="Masukkan kode CSS di sini..."></textarea>
+        <button onclick="runHTMLCSSCode()">Lihat Hasil</button>
+        <button onclick="clearCode('htmlCode'); clearCode('cssCode');">Hapus Kode</button>
+        <button onclick="copyCode('cssCode')">Salin Kode</button>
+        <button onclick="saveCode('cssCode', 'style.css')">download file</button>
+        <div class="live-preview result neon-border">
+            <h2>Live Preview (HTML + CSS):</h2>
+            <iframe id="livePreview" width="100%" height="150px" style="background-color: #0d0d0d;"></iframe>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2024 by Loufi
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1>Profil Pembuat</h1>
+            <img src="https://i.imgur.com/yAZulsm.jpeg" alt="Profile Picture" class="profile-img">
+            <p>Nama: luxxzyy / loufi</p>
+            <p>Status: kroco</p>
+            <p>team: shenix team</p>
+            <p>Deskripsi: tetap lah hidup walau gak berguna</p>
+            <button onclick="closeModal()">Kembali</button>
+        </div>
+    </div>
+
+    <script>
+        function runJSCode() {
+            const jsCode = document.getElementById('jsCode').value;
+            const jsOutput = document.getElementById('jsOutput');
+            jsOutput.textContent = '';  // Menghapus hasil output sebelumnya
+
+            // Menangkap output dari console.log
+            const origConsoleLog = console.log;
+            console.log = function (message) {
+                jsOutput.textContent += message + '\n';
+                origConsoleLog.apply(console, arguments);
+            };
+
+            try {
+                const result = eval(jsCode);
+                if (result !== undefined) {
+                    jsOutput.textContent += 'Output: ' + result + '\n';
+                } else {
+                    jsOutput.textContent += 'Kode berhasil dieksekusi tanpa output.\n';
+                }
+            } catch (error) {
+                jsOutput.textContent = 'Terjadi kesalahan: ' + error.message;
+            }
+            
+            // Mengembalikan console.log ke fungsi aslinya
+            console.log = origConsoleLog;
+        }
+
+        function runHTMLCSSCode() {
+            const htmlCode = document.getElementById('htmlCode').value;
+            const cssCode = document.getElementById('cssCode').value;
+            const livePreview = document.getElementById('livePreview').contentWindow.document;
+
+            livePreview.open();
+            livePreview.write(`
+                <!DOCTYPE html>
+                <html lang="id">
+                <head>
+                    <style>${cssCode}</style>
+                </head>
+                <body>${htmlCode}</body>
+                </html>
+            `);
+            livePreview.close();
+        }
+
+        function clearCode(id) {
+            document.getElementById(id).value = '';
+        }
+
+        function copyCode(id) {
+            const textToCopy = document.getElementById(id);
+            textToCopy.select();
+            document.execCommand('copy');
+            alert('Kode disalin ke clipboard!');
+        }
+
+        function saveCode(id, filename) {
+            const textToSave = document.getElementById(id).value;
+            const blob = new Blob([textToSave], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Modal functions
+        function openModal() {
+            document.getElementById("myModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
