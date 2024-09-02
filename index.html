@@ -17,7 +17,7 @@
             flex-direction: column;
             padding: 10px;
             box-sizing: border-box;
-            text-shadow: 0 0 10px #00ff00;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
             position: relative;
         }
         h1 {
@@ -36,7 +36,7 @@
             max-width: 400px;
             margin-bottom: 10px;
         }
-        textarea {
+        textarea, input[type="text"] {
             width: 100%;
             height: 80px;
             margin-bottom: 10px;
@@ -45,10 +45,9 @@
             border: 1px solid #00ff00;
             border-radius: 5px;
             resize: none;
-            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4);
+            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.3);
             background-color: #0d0d0d;
             color: #00ff00;
-            animation: glow 1s ease-in-out infinite alternate;
         }
         button {
             padding: 5px 10px;
@@ -71,7 +70,7 @@
             background-color: #0d0d0d;
             padding: 10px;
             border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4);
+            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.3);
             margin-top: 10px;
         }
         .output {
@@ -91,24 +90,16 @@
             color: #00ff00;
             padding: 10px;
             border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4);
+            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.3);
         }
         @keyframes blink {
             50% {
                 opacity: 0;
             }
         }
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
-            }
-            to {
-                box-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 60px #00ff00;
-            }
-        }
         .neon-border {
             border: 2px solid #00ff00;
-            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
+            box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
             border-radius: 8px;
             margin: 10px 0;
         }
@@ -154,7 +145,7 @@
             height: 50px;
             border-radius: 50%;
             border: 2px solid #00ff00;
-            box-shadow: 0 0 10px #00ff00;
+            box-shadow: 0 0 5px #00ff00;
         }
         .feedback {
             position: absolute;
@@ -191,7 +182,7 @@
             padding: 20px;
             border: 1px solid #00ff00;
             border-radius: 10px;
-            box-shadow: 0 0 10px #00ff00;
+            box-shadow: 0 0 5px #00ff00;
             width: 80%;
             max-width: 500px;
             text-align: center;
@@ -213,7 +204,7 @@
             height: 100px;
             border-radius: 50%;
             border: 2px solid #00ff00;
-            box-shadow: 0 0 10px #00ff00;
+            box-shadow: 0 0 5px #00ff00;
             margin-bottom: 20px;
         }
         .copyright {
@@ -229,6 +220,12 @@
         }
         .contact-container {
             display: none;
+        }
+        input[type="text"] {
+            height: 40px;
+        }
+        textarea#feedbackMessage {
+            height: 100px;
         }
     </style>
 </head>
@@ -251,7 +248,7 @@
         </div>
         <div class="contact-item">
             <h2>WhatsApp</h2>
-            <p><a href="https://wa.me/083878294861¹"><img src="https://img.icons8.com/color/48/000000/whatsapp.png"/> 083878294861</a></p>
+            <p><a href="https://wa.me/083878294861"><img src="https://img.icons8.com/color/48/000000/whatsapp.png"/> 083878294861</a></p>
         </div>
         <div class="contact-item">
             <h2>Facebook</h2>
@@ -259,7 +256,7 @@
         </div>
         <button onclick="hideContact()">Kembali</button>
     </div>
-    
+
     <div class="input-section">
         <h2>JavaScript:</h2>
         <textarea id="jsCode" class="neon-border" placeholder="Masukkan kode JavaScript di sini..."></textarea>
@@ -316,7 +313,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeFeedbackForm()">&times;</span>
             <h1>Feedback</h1>
-            <form id="feedbackForm" onsubmit="sendFeedback(event)">
+            <form id="feedbackForm" action="mailto:juandajuandajpt22@gmail.com" method="POST" enctype="text/plain">
                 <label for="feedbackName">Nama:</label>
                 <input type="text" id="feedbackName" name="feedbackName" required>
                 <label for="feedbackMessage">Pesan:</label>
@@ -412,16 +409,6 @@
             document.getElementById("feedbackModal").style.display = "none";
         }
 
-        function sendFeedback(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('feedbackName').value;
-            const message = document.getElementById('feedbackMessage').value;
-            const mailtoLink = `mailto:juandajuandajpt22@gmail.com?subject=Feedback dari ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
-
-            window.location.href = mailtoLink;
-        }
-
         // Check login status
         function checkLogin() {
             const username = localStorage.getItem("username");
@@ -445,4 +432,4 @@
         checkLogin();
     </script>
 </body>
-                </html>
+        </html>
