@@ -156,6 +156,22 @@
             border: 2px solid #00ff00;
             box-shadow: 0 0 10px #00ff00;
         }
+        .feedback {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #00ff00;
+            font-size: 1.2em;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 5px 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .feedback:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
         .modal {
             display: none;
             position: fixed;
@@ -220,8 +236,9 @@
     <div class="profile" onclick="openModal()">
         <img src="https://i.imgur.com/yAZulsm.jpeg" alt="Profile Picture">
     </div>
+    <div class="feedback" onclick="openFeedbackForm()">Feedback</div>
     <h1 class="glitch" id="welcome-heading">WELCOME</h1>
-    
+
     <div class="input-section">
         <button onclick="showContact()">Tampilkan Kontak</button>
     </div>
@@ -230,15 +247,15 @@
         <h1>Informasi Kontak</h1>
         <div class="contact-item">
             <h2>Email</h2>
-            <p><a href="mailto:example@example.com"><img src="https://img.icons8.com/color/48/000000/email.png"/> example@example.com</a></p>
+            <p><a href="mailto: juandajuandajpt22@gmail.com"><img src="https://img.icons8.com/color/48/000000/email.png"/> juandajuandajpt22@gmail.com</a></p>
         </div>
         <div class="contact-item">
             <h2>WhatsApp</h2>
-            <p><a href="https://wa.me/62123456789"><img src="https://img.icons8.com/color/48/000000/whatsapp.png"/> +62 123 456 789</a></p>
+            <p><a href="https://wa.me/083878294861¹"><img src="https://img.icons8.com/color/48/000000/whatsapp.png"/> 083878294861</a></p>
         </div>
         <div class="contact-item">
             <h2>Facebook</h2>
-            <p><a href="https://facebook.com" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook.png"/> Facebook</a></p>
+            <p><a href="https://www.facebook.com/Pro.codor" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook.png"/> Facebook</a></p>
         </div>
         <button onclick="hideContact()">Kembali</button>
     </div>
@@ -291,6 +308,21 @@
             <p>Team: Shenix Team</p>
             <p>Deskripsi: Tetaplah hidup walau nggak berguna</p>
             <button onclick="closeModal()">Kembali</button>
+        </div>
+    </div>
+
+    <!-- Feedback Form Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFeedbackForm()">&times;</span>
+            <h1>Feedback</h1>
+            <form id="feedbackForm" onsubmit="sendFeedback(event)">
+                <label for="feedbackName">Nama:</label>
+                <input type="text" id="feedbackName" name="feedbackName" required>
+                <label for="feedbackMessage">Pesan:</label>
+                <textarea id="feedbackMessage" name="feedbackMessage" required></textarea>
+                <button type="submit">Kirim Feedback</button>
+            </form>
         </div>
     </div>
 
@@ -371,6 +403,25 @@
             document.getElementById("myModal").style.display = "none";
         }
 
+        // Feedback Form functions
+        function openFeedbackForm() {
+            document.getElementById("feedbackModal").style.display = "flex";
+        }
+
+        function closeFeedbackForm() {
+            document.getElementById("feedbackModal").style.display = "none";
+        }
+
+        function sendFeedback(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('feedbackName').value;
+            const message = document.getElementById('feedbackMessage').value;
+            const mailtoLink = `mailto:juandajuandajpt22@gmail.com?subject=Feedback dari ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+
+            window.location.href = mailtoLink;
+        }
+
         // Check login status
         function checkLogin() {
             const username = localStorage.getItem("username");
@@ -394,4 +445,4 @@
         checkLogin();
     </script>
 </body>
-    </html>
+                </html>
