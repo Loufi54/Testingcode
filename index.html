@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>testing kode</title>
+    <title>Testing Kode</title>
     <style>
         body {
             display: flex;
@@ -205,6 +205,15 @@
             font-size: 0.6em;
             color: #00ff00;
         }
+        .contact-item img {
+            vertical-align: middle;
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .contact-container {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -212,36 +221,60 @@
         <img src="https://i.imgur.com/yAZulsm.jpeg" alt="Profile Picture">
     </div>
     <h1 class="glitch" id="welcome-heading">WELCOME</h1>
+    
+    <div class="input-section">
+        <button onclick="showContact()">Tampilkan Kontak</button>
+    </div>
+    
+    <div class="contact-container" id="contact-section">
+        <h1>Informasi Kontak</h1>
+        <div class="contact-item">
+            <h2>Email</h2>
+            <p><a href="mailto:example@example.com"><img src="https://img.icons8.com/color/48/000000/email.png"/> example@example.com</a></p>
+        </div>
+        <div class="contact-item">
+            <h2>WhatsApp</h2>
+            <p><a href="https://wa.me/62123456789"><img src="https://img.icons8.com/color/48/000000/whatsapp.png"/> +62 123 456 789</a></p>
+        </div>
+        <div class="contact-item">
+            <h2>Facebook</h2>
+            <p><a href="https://facebook.com" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook.png"/> Facebook</a></p>
+        </div>
+    </div>
+    
     <div class="input-section">
         <h2>JavaScript:</h2>
         <textarea id="jsCode" class="neon-border" placeholder="Masukkan kode JavaScript di sini..."></textarea>
         <button onclick="runJSCode()">Jalankan Kode</button>
         <button onclick="clearCode('jsCode')">Hapus Kode</button>
         <button onclick="copyCode('jsCode')">Salin Kode</button>
-        <button onclick="saveCode('jsCode', 'script.js')">download file</button>
+        <button onclick="saveCode('jsCode', 'script.js')">Download File</button>
         <div class="result neon-border">
             <h2>Hasil JavaScript:</h2>
             <div id="jsOutput" class="output"></div>
         </div>
     </div>
+
     <div class="input-section">
         <h2>HTML:</h2>
         <textarea id="htmlCode" class="neon-border" placeholder="Masukkan kode HTML di sini..."></textarea>
         <button onclick="copyCode('htmlCode')">Salin Kode</button>
-        <button onclick="saveCode('htmlCode', 'index.html')">download file</button>
+        <button onclick="saveCode('htmlCode', 'index.html')">Download File</button>
     </div>
+
     <div class="input-section">
         <h2>CSS:</h2>
         <textarea id="cssCode" class="neon-border" placeholder="Masukkan kode CSS di sini..."></textarea>
         <button onclick="runHTMLCSSCode()">Lihat Hasil</button>
         <button onclick="clearCode('htmlCode'); clearCode('cssCode');">Hapus Kode</button>
         <button onclick="copyCode('cssCode')">Salin Kode</button>
-        <button onclick="saveCode('cssCode', 'style.css')">download file</button>
+        <button onclick="saveCode('cssCode', 'style.css')">Download File</button>
         <div class="live-preview result neon-border">
             <h2>Live Preview (HTML + CSS):</h2>
             <iframe id="livePreview" width="100%" height="150px" style="background-color: #0d0d0d;"></iframe>
         </div>
     </div>
+
     <div class="copyright">
         &copy; 2024 by Loufi
     </div>
@@ -254,8 +287,8 @@
             <img src="https://i.imgur.com/yAZulsm.jpeg" alt="Profile Picture" class="profile-img">
             <p>Nama: luxxzyy / loufi</p>
             <p>Status: kroco</p>
-            <p>team: shenix team</p>
-            <p>Deskripsi: tetap lah hidup walau gak berguna</p>
+            <p>Team: Shenix Team</p>
+            <p>Deskripsi: Tetaplah hidup walau nggak berguna</p>
             <button onclick="closeModal()">Kembali</button>
         </div>
     </div>
@@ -347,7 +380,12 @@
             }
         }
 
+        function showContact() {
+            const contactSection = document.getElementById('contact-section');
+            contactSection.style.display = 'block';
+        }
+
         checkLogin();
     </script>
 </body>
-            </html>
+    </html>
