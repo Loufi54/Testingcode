@@ -73,25 +73,17 @@
 
 <div id="welcome-section" class="login-container" style="display: none;">
     <h1 id="welcome-message"></h1>
-    <button onclick="logout()">Logout</button>
 </div>
 
 <script>
     function login() {
         const username = document.getElementById('username').value;
         if (username) {
-            document.getElementById('welcome-message').innerText = 'Welcome ' + username + '!';
-            document.getElementById('login-section').style.display = 'none';
-            document.getElementById('welcome-section').style.display = 'block';
+            localStorage.setItem("username", username);
+            window.location.href = "index.html";
         } else {
             alert('Nama tidak boleh kosong!');
         }
-    }
-    
-    function logout() {
-        document.getElementById('login-section').style.display = 'block';
-        document.getElementById('welcome-section').style.display = 'none';
-        document.getElementById('username').value = '';
     }
 </script>
 
