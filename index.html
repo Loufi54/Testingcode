@@ -10,14 +10,16 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #0d0d0d;
+            background-image: url('https://i.imgur.com/nbP1SmA.jpeg');
+            background-size: cover;
+            background-position: center;
             color: #00ff00;
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
             flex-direction: column;
             padding: 10px;
             box-sizing: border-box;
-            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+            text-shadow: 0 0 3px #00ff00, 0 0 5px #00ff00;
             position: relative;
         }
         h1 {
@@ -46,7 +48,7 @@
             border-radius: 5px;
             resize: none;
             box-shadow: 0 2px 4px rgba(0, 255, 0, 0.3);
-            background-color: #0d0d0d;
+            background-color: rgba(13, 13, 13, 0.8); /* Warna background semi transparan */
             color: #00ff00;
         }
         button {
@@ -54,7 +56,7 @@
             font-size: 12px;
             border: 1px solid #00ff00;
             border-radius: 5px;
-            background-color: #0d0d0d;
+            background-color: rgba(13, 13, 13, 0.8); /* Warna background semi transparan */
             color: #00ff00;
             cursor: pointer;
             margin: 5px 2px;
@@ -67,7 +69,7 @@
         .result {
             width: 100%;
             max-width: 400px;
-            background-color: #0d0d0d;
+            background-color: rgba(13, 13, 13, 0.8); /* Warna background semi transparan */
             padding: 10px;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 255, 0, 0.3);
@@ -78,7 +80,7 @@
             white-space: pre-wrap;
             max-height: 150px;
             overflow-y: auto;
-            background-color: #0d0d0d;
+            background-color: rgba(13, 13, 13, 0.8); /* Warna background semi transparan */
             padding: 5px;
             border-radius: 5px;
             color: #00ff00;
@@ -86,7 +88,7 @@
         }
         .live-preview {
             margin-top: 10px;
-            background-color: #0d0d0d;
+            background-color: rgba(13, 13, 13, 0.8); /* Warna background semi transparan */
             color: #00ff00;
             padding: 10px;
             border-radius: 5px;
@@ -178,7 +180,7 @@
             align-items: center;
         }
         .modal-content {
-            background-color: #0d0d0d;
+            background-color: rgba(13, 13, 13, 1);
             padding: 20px;
             border: 1px solid #00ff00;
             border-radius: 10px;
@@ -286,7 +288,7 @@
         <button onclick="saveCode('cssCode', 'style.css')">Download File</button>
         <div class="live-preview result neon-border">
             <h2>Live Preview (HTML + CSS):</h2>
-            <iframe id="livePreview" width="100%" height="150px" style="background-color: #0d0d0d;"></iframe>
+            <iframe id="livePreview" width="100%" height="150px" style="background-color: rgba(13, 13, 13, 0.8);"></iframe>
         </div>
     </div>
 
@@ -432,4 +434,4 @@
         checkLogin();
     </script>
 </body>
-        </html>
+            </html>
