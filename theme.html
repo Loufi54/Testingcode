@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Tema</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom right, #111, #222);
+            color: #00ff00;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        .theme-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background-color: #111;
+            color: #00ff00;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .theme-button:hover {
+            background-color: #00ff00;
+            color: #111;
+            transform: scale(1.1);
+        }
+        .back-button {
+            margin-top: 30px;
+            font-size: 14px;
+            padding: 8px 16px;
+            border: 1px solid #00ff00;
+            background: none;
+            color: #00ff00;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #00ff00;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pilih Tema</h1>
+    <button class="theme-button" onclick="applyTheme('dark')">Tema Gelap</button>
+    <button class="theme-button" onclick="applyTheme('light')">Tema Terang</button>
+    <button class="back-button" onclick="goBack()">Kembali</button>
+
+    <script>
+        function applyTheme(theme) {
+            alert(`Tema ${theme} diterapkan!`);
+            // Anda bisa menambahkan logika untuk menerapkan tema di sini
+        }
+
+        function goBack() {
+            window.location.href = "index.html"; // Ganti dengan file HTML utama Anda
+        }
+    </script>
+</body>
+  </html>
